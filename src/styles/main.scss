@@ -1,0 +1,8 @@
+@use './global/reset';
+@use './global/vars' as vars;
+
+
+@use './sections/layout/header';
+@use './sections/layout/footer';
+
+@use './sections/content';

@@ -1,0 +1,24 @@
+$color-text-primary:#e7e7e7;
+$color-text-secondary:#91969f;
+$color-text-accent: #4ed5ff;
+$color-btn-primary: #fee32a;
+$color-btn-secondary: #f82c56;
+$bg-color:#0e0f12;
+$bg-list: #1b1e29;
+
+
+@mixin font-inter ($size:2.5rem, $weight:400, $color:$color-text-primary){
+    font-family: 'Inter',sans-serif;
+    font-weight: $weight;
+    font-size: $size;
+    line-height: 150%;
+    color: $color;
+}
+
+@mixin font-oswald ($size:2.5rem, $weight:400, $color:$color-text-primary){
+    font-family: 'Oswald',sans-serif;
+    font-weight: $weight;
+    font-size: $size;
+    line-height: 150%;
+    color: $color;
+}

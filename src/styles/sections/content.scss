@@ -1,0 +1,7 @@
+@use '../global/vars' as *;
+.title-block{
+    &.child{
+        color: $color-btn-secondary;
+        font-size: 66px;
+    }
+}
