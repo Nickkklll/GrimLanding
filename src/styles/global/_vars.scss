@@ -1,10 +1,14 @@
-$color-text-primary:#e7e7e7;
+$color-text-primary:#f7f7f7;
 $color-text-secondary:#91969f;
 $color-text-accent: #4ed5ff;
+$color-border: #333538;
 $color-btn-primary: #fee32a;
-$color-btn-secondary: #f82c56;
-$bg-color:#0e0f12;
+$color-btn-secondary: #e63950;
+$bg-color:#121212;
 $bg-list: #1b1e29;
+
+$min-radius:3px;
+$main-radius:8px;
 
 
 @mixin font-inter ($size:2.5rem, $weight:400, $color:$color-text-primary){
@@ -12,6 +16,7 @@ $bg-list: #1b1e29;
     font-weight: $weight;
     font-size: $size;
     line-height: 150%;
+    letter-spacing: 0.02rem;
     color: $color;
 }
 
