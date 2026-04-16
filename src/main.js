@@ -1,11 +1,10 @@
 import "@/styles/main.scss";
 
 
-import Swiper from "swiper";
+import Swiper from "swiper/core";
 import "swiper/css";
 import "swiper/css/pagination";
-
-import { EffectCoverflow, Keyboard, Pagination } from "swiper/modules";
+import { Keyboard, Pagination } from "swiper/modules";
 
 let concerts=[
   {
@@ -46,7 +45,7 @@ validationForm(form);
 validationForm(ticketForm);
 initBurger();
 const memberSwiper = new Swiper(".group__slider", {
-  modules: [EffectCoverflow, Keyboard, Pagination],
+  modules: [Keyboard, Pagination],
 
   pagination: {
     el: '.swiper-pagination',
@@ -324,4 +323,17 @@ function initConcertsList(el){
                    <button class="cta__btn btn-red">Замовити квиток</button>`;
     el.append(div);
   })
+}
+const mapIframe = document.querySelector('.map__block iframe[data-src]');
+if (mapIframe) {
+  const mapObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        mapIframe.src = mapIframe.dataset.src;
+        observer.disconnect();
+      }
+    });
+  }, { rootMargin: '200px' });
+
+  mapObserver.observe(mapIframe);
 }

@@ -20,10 +20,3 @@ $main-radius:8px;
     color: $color;
 }
 
-@mixin font-oswald ($size:2.5rem, $weight:400, $color:$color-text-primary){
-    font-family: 'Oswald',sans-serif;
-    font-weight: $weight;
-    font-size: $size;
-    line-height: 150%;
-    color: $color;
-}
