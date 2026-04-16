@@ -3,7 +3,13 @@
 h2{
     @include font-inter(36px,700)
 }
-
+button,a{
+    transition: opacity .1s ease-in-out;
+}
+button:active,
+a:active {
+  opacity: 0.7; 
+}
 header{
     background-color: $bg-color;
     padding: 20px 150px;
