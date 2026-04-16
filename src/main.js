@@ -3,6 +3,9 @@ import "@/styles/main.scss";
 
 import Swiper from "swiper";
 import "swiper/css";
+import "swiper/css/pagination";
+
+import { EffectCoverflow, Keyboard, Pagination } from "swiper/modules";
 
 let concerts=[
   {
@@ -41,15 +44,31 @@ initConcertsList(document.querySelector('.concerts__grid'));
 initPopup('.ticket__popup','.cta__btn');
 validationForm(form);
 validationForm(ticketForm);
-const memberSiper = new Swiper(".group__slider", {
-  speed: 400,
-  spaceBetween: 10,
-  loop: true,
-  slidesPerView: 3,
-  keyboard: {
-    enabled: true,
-    onlyInViewport: true,
+initBurger();
+const memberSwiper = new Swiper(".group__slider", {
+  modules: [EffectCoverflow, Keyboard, Pagination],
+
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
   },
+
+  initialSlide: 1,
+  centeredSlides: true,
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  breakpoints:{
+    414:{
+      spaceBetween: 50,
+    },
+    532:{
+      spaceBetween: 100,
+    },
+    882:{
+       spaceBetween: 100,
+        enabled: false,
+    }
+  }
 });
 
 const links = document.querySelectorAll(".nav-link");
@@ -252,7 +271,47 @@ function initPopup(itmClass, triger){
   
 }
 
+function initBurger() {
+  if (window.innerWidth > 775) return;
 
+  const menu = document.querySelector('.burger');
+  const menuWrapper=menu.querySelector('.burger__wrapper')
+  const burgerIcon = document.querySelector('.burger-icon');
+  const body = document.body;
+
+  if (!menu || !burgerIcon) return;
+
+  burgerIcon.addEventListener('click', () => {
+    menu.style.opacity= '1';
+    menu.style.visibility='visible';
+    
+    menuWrapper.style.opacity='1';
+    menuWrapper.style.visibility='visible';
+    menuWrapper.style.transform='translateX(0%)';
+    body.style.overflow = 'hidden';
+  });
+
+  menu.addEventListener('click', (e) => {
+    const isCloseBtn = e.target.closest('.close__btn');
+    const isOverlay = e.target === menu;
+    const isLink = e.target.closest('a');
+
+    if (isCloseBtn || isOverlay || isLink) {
+      menu.style.opacity= '0';
+    menu.style.visibility='hidden';
+    
+    menuWrapper.style.transform='translateX(-150%)';
+    menuWrapper.style.opacity='0';
+    menuWrapper.style.visibility='hidden';
+    
+
+      // ждём окончания анимации
+      setTimeout(() => {
+        body.style.overflow = '';
+      }, 300); // должно совпадать с CSS transition
+    }
+  });
+}
 
 function initConcertsList(el){
   concerts.forEach(concert=>{

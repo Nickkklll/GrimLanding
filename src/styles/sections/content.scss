@@ -14,8 +14,23 @@ header{
     @media(width<=1180px){
         padding: 15px 50px;
     }
+    @media(width<=775px){
+            padding: 10px 25px;
+        }
     .logo{
         @include font-inter(20px,800)
+    }
+    .burger-icon{
+        width: 28px;
+        height: 24px;
+        display: none;
+        svg{
+            width: 100%;
+            height: 100%;
+        }
+         @media(width<=775px){
+            display: block;
+        }
     }
 
     .navigation{
@@ -26,7 +41,90 @@ header{
         li{
             @include font-inter( 14px,600)
         }
+        @media(width<=775px){
+            display: none;
+        }
+        
     }
+}
+
+.swiper-pagination{
+    position: relative !important;
+    margin-top: 20px;
+    .swiper-pagination-bullet{
+        background-color: #fff !important;
+    }
+}
+.swiper-slide {
+  width: 250px !important;
+}
+.burger{
+    background-color: rgba(0,0,0,0.8);
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 101;
+    opacity: 0;
+    transition:  opacity .3s ease-in-out, transform .3s ease-in-out;
+    visibility: hidden;
+    
+}
+.burger__wrapper{
+    opacity: 0;
+visibility: hidden;
+    transform: translateX(-150%);
+    transition: transform .3s ease-in-out;
+    background-color: $bg-color;
+    max-width: 200px;
+    height: 100%;
+    position: relative;
+    .close__btn{
+        top: 0px;
+        right: 5px;
+    }
+    .logo{
+        @include font-inter(20px,800);
+        width: 100%;
+        padding: 5px 20px;
+        border-bottom: 1px solid $color-border;
+    }
+}
+
+.burger-nav{
+    margin-top: 10px;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+
+        li{
+            @include font-inter( 14px,600);
+            display: block;
+            position: relative;
+            padding:5px 20px ;
+            transition: background 0.3s ease-in-out;
+            
+            width: 100%;
+            a{
+                display: inline-block;
+                width: 100%;
+            }
+            &:hover{
+                background:rgba(255,255,255,0.2);
+            }
+            &:before{
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 10px;
+                width: 90%;
+                background-color: $color-border;
+                height: 1px;
+
+            }
+            
+        }
 }
 .container{
     margin: 0px auto;
@@ -168,6 +266,10 @@ header{
 
     &__wrapper{
         padding: 100px 0px;
+         @media(width<=446px){
+            padding: 50px 0px;
+        
+        }
     }
 
     &__list{
@@ -188,7 +290,11 @@ header{
         flex-direction: column;
     }
     &__header{
-        @include font-inter(16px, 500, $color-text-secondary)
+        @include font-inter(16px, 500, $color-text-secondary);
+         @media(width<=446px){
+            display: none;
+        
+        }
     }
      &__row{
         @include font-inter(16px,400);
@@ -197,7 +303,25 @@ header{
         align-items: center;
         padding: 20px 20px;
         border-top: 1px solid $color-border;
+        .cta__btn{
+            margin: 0 auto;
+             @media(width<=665px){
+                margin: 20px auto 0px;
+            grid-column: 1/-1;
+        }
+            
+        }
+        @media(width<= 862px){
+            grid-template-columns: 2fr 1fr 1fr 2fr;
+        }
+        @media(width<=665px){
+            grid-template-columns: 1fr 1fr 1fr;
+            text-align: center;
+        }
+        @media(width<=446px){
+            grid-template-columns: 1fr;
         
+        }
      }
     
 }   
@@ -260,10 +384,15 @@ header{
             max-width: 400px;
             object-fit: cover;
             object-position: center;
-
+            
             float: right;
             border: 1px solid $bg-list;
             border-radius: $min-radius;
+             @media(width<=446px){
+                float:none;
+            max-width: 100% ;
+        
+        }
         }
        
         h2{
@@ -395,6 +524,9 @@ footer{
     .footer__wrapper{
         display: flex;
         justify-content: space-between;
+        @media(width<=812px){
+               flex-direction: column;                
+            }
     }
     .left-side{
 
@@ -463,22 +595,36 @@ footer{
     z-index: 1000;
     height: 100%;
     padding: 30vh  0px;
+     @media(width<=812px){
+                padding: 10vh 10px;
+                
+            }
     }
 
     &-form{
         display: grid;
         grid-template-columns: repeat(2,1fr);
         gap: 20px;
+         @media(width<=812px){
+                grid-template-columns: repeat(1,1fr);
+                
+            }
+        
 
         
         select,
         input:not([type="submit"]){
+            
             background: $bg-list;
             border: 1px solid $color-border;
             border-radius: $min-radius;
             @include font-inter(16px,400);
             letter-spacing: 0.5px;
              padding: 8px  8px;  
+             @media(width<=812px){
+                width: 100%;
+                
+            }
         }
         #number{
             position: relative;
@@ -510,6 +656,11 @@ footer{
             padding: 36px 24px 24px;
             border-radius: $main-radius;
             border-color: 1px solid $color-border;
+
+            @media(width<=812px){
+                width: 100%;
+                
+            }
 
         }
     }
