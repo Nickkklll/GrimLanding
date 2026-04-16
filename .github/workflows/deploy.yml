@@ -2,7 +2,7 @@ name: Deploy Grimlanding to Pages
 
 on:
   push:
-    branches: ["main"] # Убедись, что твоя основная ветка называется main
+    branches: ["main"]
 
 permissions:
   contents: read
@@ -37,4 +37,10 @@ jobs:
         with:
           path: './dist'
 
-  
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
